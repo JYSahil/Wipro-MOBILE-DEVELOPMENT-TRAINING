@@ -1,0 +1,16 @@
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+  }
+  .about-me-photo {
+    max-width: 200px; /* Adjust the maximum width as needed */
+    height: auto;
+    border-radius: 50%; /* Ensures the image is circular */
+  }
+  .resume-heading {
+    color: #007bff; /* Example color */
+  }
+  
+  .resume-item {
+    margin-bottom: 30px;
+  }
