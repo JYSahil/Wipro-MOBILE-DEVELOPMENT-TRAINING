@@ -1,112 +1,179 @@
-/* Basic Reset */
+/* Reset some default browser styles */
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
+/* Basic styling */
 body {
     font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+header, footer {
+    text-align: center;
+    padding: 10px;
     background-color: #f4f4f4;
+}
+
+h1 {
     margin: 0;
 }
 
-header {
-    background-color: #4CAF50;
-    color: white;
-    text-align: center;
-    padding: 20px 0;
-}
-
+/* Container layout */
 .container {
     display: flex;
-    gap: 20px;
-    padding: 20px;
-    justify-content: space-between;
-}
-
-.sidebar, .main-content {
-    flex-basis: 30%; /* Sidebar and main content take up 30% each */
+    flex-wrap: wrap;
+    margin: 20px auto;
+    max-width: 1200px;
 }
 
 .sidebar {
-    background-color: #f0f0f0;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    margin: 10px;
+    padding: 15px;
+    background-color: #e2e2e2;
+    border-radius: 5px;
+    animation: fadeIn 1s ease-in-out;
 }
 
 .main-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-section, article {
-    margin-bottom: 20px;
-}
-
-h2 {
-    color: #4CAF50;
+    flex: 2;
+    margin: 10px;
+    padding: 15px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    animation: fadeIn 1s ease-in-out;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 10px;
 }
 
 table, th, td {
-    border: 1px solid #ddd;
+    border: 1px solid #ccc;
 }
 
 th, td {
-    padding: 15px;
+    padding: 10px;
     text-align: left;
 }
 
-th {
-    background-color: #f2f2f2;
-}
-
-form {
-    margin-top: 10px;
-}
-
-label {
-    font-weight: bold;
-}
-
-input[type="text"], input[type="email"] {
-    width: 100%;
-    padding: 8px;
-    margin: 5px 0 10px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-input[type="submit"] {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-input[type="submit"]:hover {
-    background-color: #45a049;
-}
-
-footer {
-    background-color: #333;
-    color: white;
+/* Menu styles */
+.menu {
     text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    bottom: 0;
+    margin: 20px 0;
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu ul li {
+    display: inline-block;
+    margin: 0 10px;
+    animation: slideIn 0.5s ease-in-out;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.menu ul li a:hover {
+    background-color: #333;
+    color: #fff;
+    transform: scale(1.1);
+}
+
+/* Form styles */
+.form {
+    animation: fadeIn 1s ease-in-out;
+}
+
+form input[type="text"], form input[type="email"], form input[type="submit"] {
     width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+form input[type="text"]:focus, form input[type="email"]:focus {
+    border-color: #333;
+}
+
+form input[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form input[type="submit"]:hover {
+    background-color: #555;
+}
+
+/* Keyframes for animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar, .main-content {
+        margin: 10px 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .sidebar, .main-content {
+        flex-basis: calc(50% - 20px);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .sidebar, .main-content {
+        flex-basis: 100%;
+    }
+
+    header, footer {
+        padding: 20px;
+    }
+
+    .menu ul li {
+        display: block;
+        margin: 10px 0;
+    }
 }
