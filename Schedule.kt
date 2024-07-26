@@ -1,14 +1,12 @@
-import java.time.LocalDate
-
 class Schedule {
-    private val events = mutableListOf<Event>()
+    private val events = mutableListOf<Schedulable>()
 
-    fun addEvent(event: Event) {
+    fun addEvent(event: Schedulable) {
         events.add(event)
         println("Event added: ${event.name}")
     }
 
-    fun removeEvent(event: Event) {
+    fun removeEvent(event: Schedulable) {
         if (events.remove(event)) {
             println("Event removed: ${event.name}")
         } else {
@@ -25,13 +23,5 @@ class Schedule {
                 println("${event.name} at ${event.scheduledTime}")
             }
         }
-    }
-
-    fun filterEventsByDate(date: LocalDate): List<Event> {
-        return events.filter { it.scheduledTime.toLocalDate() == date }
-    }
-
-    fun filterEventsByType(eventType: Class<out Event>): List<Event> {
-        return events.filter { it.javaClass == eventType }
     }
 }
