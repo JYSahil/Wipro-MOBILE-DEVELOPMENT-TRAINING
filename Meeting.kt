@@ -1,17 +1,25 @@
 import java.time.LocalDateTime
 
-data class Meeting(
-   override var name: String,
-    override var scheduledTime: LocalDateTime
+class Meeting(
+    private val _name: String,
+    private var _scheduledTime: LocalDateTime
 ) : Schedulable {
+    override val name: String
+        get() = _name
+
+    override var scheduledTime: LocalDateTime
+        get() = _scheduledTime
+        set(value) {
+            _scheduledTime = value
+        }
+
     override fun schedule(time: LocalDateTime) {
-        this.scheduledTime = time
+        scheduledTime = time
         println("Meeting '$name' scheduled for $scheduledTime")
     }
 
     override fun reschedule(newTime: LocalDateTime) {
-        this.scheduledTime = newTime
+        scheduledTime = newTime
         println("Meeting '$name' rescheduled to $scheduledTime")
     }
 }
-

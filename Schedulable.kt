@@ -1,7 +1,7 @@
 import java.time.LocalDateTime
 
 interface Schedulable {
-    var name: String
+    val name: String
     var scheduledTime: LocalDateTime
 
     fun schedule(time: LocalDateTime)
