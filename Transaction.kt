@@ -1,7 +1,13 @@
+//Define an Exportable interface with a method to export transaction data to CSV.
+import java.io.File
 data class Transactionl(
     var id: Int,
     var amount: Double
-)
+) : Exportable {
+    override fun exportToCSV(): String {
+        return "$id,$amount"
+    }
+}
 
 class TransactionList {
     private val transactions = mutableListOf<Transactionl>()
@@ -27,6 +33,12 @@ class TransactionList {
     fun getTransactions(): List<Transactionl> {
         return transactions
     }
+
+    fun exportTransactionsToCSV(): String {
+        val header = "ID,Amount"
+        val csvData = transactions.joinToString("\n") { it.exportToCSV() }
+        return "$header\n$csvData"
+    }
 }
 
 fun main() {
@@ -40,4 +52,12 @@ fun main() {
 
     transactionList.deleteTransaction(2)
     println(transactionList.getTransactions())
+
+    // Export transactions to CSV and write to a file
+    val csvData = transactionList.exportTransactionsToCSV()
+    val fileName = "transactions.csv"
+    val file = File(fileName)
+    file.writeText(csvData)
+
+    println("Transaction data has been exported to $fileName")
 }
