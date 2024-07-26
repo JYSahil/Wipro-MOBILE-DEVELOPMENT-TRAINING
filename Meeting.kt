@@ -3,13 +3,13 @@ import java.time.LocalDateTime
 class Meeting(
     private val _name: String,
     private var _scheduledTime: LocalDateTime
-) : Schedulable {
+) : Event {
     override val name: String
         get() = _name
 
     override var scheduledTime: LocalDateTime
         get() = _scheduledTime
-        set(value) {
+        private set(value) {
             _scheduledTime = value
         }
 
